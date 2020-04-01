@@ -1,0 +1,74 @@
+extends base
+
+block content
+  .container.m-t
+    .row.border.rounded.py-2
+      .col-12
+        span.font-weight-bold(style='font-size:25px;')
+          i(class=`pr-5 flag-icon flag-icon-${result.countryCode}`)
+          = `${result.country} Overview`
+
+      .col-12.col-md-4
+        .container.py-3.text-center
+          .py-2.bg-orange.rounded.shadow.text-orange.font-weight-bold.fontStats= result.totalConfirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            .my-1.border-top.border-orange.marginDivider
+            span.pt-1.d-block.fontLabel Confirmed
+      
+      .col-12.col-md-4
+        .container.py-3.text-center
+          .py-2.bg-green.rounded.shadow.text-green.font-weight-bold.fontStats= result.totalRecovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            .my-1.border-top.border-green.marginDivider
+            span.pt-1.d-block.fontLabel Recovered
+
+      .col-12.col-md-4
+        .container.py-3.text-center
+          .py-2.bg-red.rounded.shadow.text-red.font-weight-bold.fontStats= result.totalDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            .my-1.border-top.border-red.marginDivider
+            span.pt-1.d-block.fontLabel Deaths
+      
+      .col-12.col-md-6
+        .container.py-3.text-center
+          - let recoveryRate = 0;
+          if result.totalConfirmed
+            - recoveryRate = (result.totalRecovered / result.totalConfirmed) * 100;
+          else
+            - recoveryRate = 0;
+          .py-2.bg-green.rounded.shadow.text-green.font-weight-bold.fontStats= `${recoveryRate.toFixed(2)}%`
+            .my-1.border-top.border-green.marginDivider
+            span.pt-1.d-block.fontLabel Recovery Rate
+      
+      .col-12.col-md-6
+        .container.py-3.text-center
+          - let deathRate = 0;
+          if result.totalConfirmed
+            - deathRate = (result.totalDeaths / result.totalConfirmed) * 100;
+          else
+            - deathRate = 0;
+          .py-2.bg-red.rounded.shadow.text-red.font-weight-bold.fontStats= `${deathRate.toFixed(2)}%`
+            .my-1.border-top.border-red.marginDivider
+            span.pt-1.d-block.fontLabel Death Rate
+      
+      .col-12.col-md-4
+        .container.py-3.text-center
+          .py-2.bg-red.rounded.shadow.text-red.font-weight-bold.fontStats= result.totalCritical.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            .my-1.border-top.border-red.marginDivider
+            span.pt-1.d-block.fontLabel Critical Cases
+      
+      .col-12.col-md-4
+        .container.py-3.text-center
+          .py-2.bg-red.rounded.shadow.text-red.font-weight-bold.fontStats= result.activeCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            .my-1.border-top.border-red.marginDivider
+            span.pt-1.d-block.fontLabel Active Cases
+      
+      .col-12.col-md-4
+        .container.py-3.text-center
+          .py-2.bg-red.rounded.shadow.text-red.font-weight-bold.fontStats= result.dailyConfirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            .my-1.border-top.border-red.marginDivider
+            span.pt-1.d-block.fontLabel Daily Cases
+    
+    .row.m-t.pb-3
+      .col-12
+        #chartContainerCountry(data-countrycode=`${result.countryCode}`)
+
+      
+    

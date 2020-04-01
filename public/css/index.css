@@ -1,0 +1,128 @@
+::selection {
+  background-color: orange;
+  color: white;
+}
+
+body {
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: 84%;
+  background-attachment: fixed;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #e53e3e;
+  font-weight: bold;
+}
+.nav-col {
+  background-color: #fff;
+}
+.brandPh {
+  font-family: 'Black Han Sans', sans-serif;
+}
+.m-t {
+  margin-top: 5%;
+}
+.notfound-m-t {
+  margin-top: 35%;
+}
+.m-w {
+  max-width: 800px;
+}
+.bg-red {
+  background-color: #fed7d7;
+}
+
+.bg-green {
+  background-color: #c6f6d5;
+}
+
+.bg-orange {
+  background-color: #f6d18b;
+}
+
+.border-red {
+  border-color: #e53e3e !important;
+}
+.border-green {
+  border-color: #38a169 !important;
+}
+.border-orange {
+  border-color: #ff6600 !important;
+}
+
+.text-red {
+  color: #e53e3e;
+}
+
+.text-green {
+  color: #38a169;
+}
+
+.text-orange {
+  color: #ff6600;
+}
+
+.fontStats {
+  font-size: 1.7rem;
+}
+
+.fontLabel {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.flag-icon {
+  background-size: contain;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  position: relative;
+  display: inline-block;
+  width: 1.33333333em;
+  line-height: 1em;
+}
+
+.marginDivider {
+  margin: 0 20px;
+}
+
+td a {
+  color: #000;
+  text-decoration: none;
+}
+
+.shadow {
+  box-shadow: 0.4rem 0.4rem 0.5rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.tableHeight {
+  height: 550px;
+  overflow: auto;
+}
+
+.m-t-500 {
+  margin-top: 40%;
+}
+
+.mobile-m-t {
+  margin-top: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .m-t {
+    margin-top: 15%;
+  }
+
+  .notfound-m-t {
+    margin-top: 70%;
+  }
+
+  .m-t-500 {
+    margin-top: 110%;
+  }
+
+  .mobile-m-t {
+    margin-top: 110%;
+  }
+}

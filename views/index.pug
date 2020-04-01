@@ -1,0 +1,48 @@
+extends base
+
+block content
+  .container.m-t
+    .row.border.rounded.py-2
+      .col-12.col-md-4
+        .container.py-3.text-center
+          .py-2.bg-orange.rounded.shadow.text-orange.font-weight-bold.fontStats= count.data.totalConfirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            .my-1.border-top.border-orange.marginDivider
+            span.pt-1.d-block.fontLabel Confirmed
+      
+      .col-12.col-md-4
+        .container.py-3.text-center
+          .py-2.bg-green.rounded.shadow.text-green.font-weight-bold.fontStats= count.data.totalRecovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            .my-1.border-top.border-green.marginDivider
+            span.pt-1.d-block.fontLabel Recovered
+
+      .col-12.col-md-4
+        .container.py-3.text-center
+          .py-2.bg-red.rounded.shadow.text-red.font-weight-bold.fontStats= count.data.totalDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            .my-1.border-top.border-red.marginDivider
+            span.pt-1.d-block.fontLabel Deaths
+    
+    .row.m-t.pb-3
+      .col-12.my-2
+        table.table
+          thead
+            tr.text-center
+              th(colspan='4') Top 10 Affected Countries
+            tr
+              th(scope='col') Countries
+              th(scope='col') Confirmed
+              th(scope='col') Recovered
+              th(scope='col') Deaths
+          tbody
+            each result in results
+              tr
+                td
+                  a(href=`/affected-countries/${result.countryCode.toLowerCase()}` target='_blank')
+                    i(class=`pr-5 flag-icon flag-icon-${result.countryCode.toLowerCase()}`)
+                    = result.country
+
+                td= result.totalConfirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+                td= result.totalRecovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+                td= result.totalDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+
+        .text-center
+          a(href='/affected-countries') View More

@@ -1,0 +1,11 @@
+extends base
+
+block content
+  .container.m-w
+    .rounded.bg-red.notfound-m-t.p-4
+      h1.display-4.text-center.pb-4.text-red.font-weight-bold= header
+      .my-1.border-top.border-orange.marginDivider
+      p.fontStats.text-center.text-red.d-flex.justify-content-center.mt-4= message
+      a(href='/affected-countries')
+        span:i.fas.fa-arrow-left.mx-2.text-red
+        span.text-red Go back to our site

@@ -1,0 +1,72 @@
+extends base
+
+block content
+  .container.m-t
+    .row.border.rounded.py-2
+      .col-12.col-md-4
+        .container.py-3.text-center
+          .py-2.bg-orange.rounded.shadow.text-orange.font-weight-bold.fontStats= count.data.totalConfirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            .my-1.border-top.border-orange.marginDivider
+            span.pt-1.d-block.fontLabel Confirmed
+      
+      .col-12.col-md-4
+        .container.py-3.text-center
+          .py-2.bg-green.rounded.shadow.text-green.font-weight-bold.fontStats= count.data.totalRecovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            .my-1.border-top.border-green.marginDivider
+            span.pt-1.d-block.fontLabel Recovered
+
+      .col-12.col-md-4
+        .container.py-3.text-center
+          .py-2.bg-red.rounded.shadow.text-red.font-weight-bold.fontStats= count.data.totalDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            .my-1.border-top.border-red.marginDivider
+            span.pt-1.d-block.fontLabel Deaths
+      
+      .col-12.col-md-6
+        .container.py-3.text-center
+          - const recoveryRate = (count.data.totalRecovered / count.data.totalConfirmed) * 100;
+          .py-2.bg-green.rounded.shadow.text-green.font-weight-bold.fontStats= `${recoveryRate.toFixed(2)}%`
+            .my-1.border-top.border-green.marginDivider
+            span.pt-1.d-block.fontLabel Recovery Rate
+      
+      .col-12.col-md-6
+        .container.py-3.text-center
+          - const deathRate = (count.data.totalDeaths / count.data.totalConfirmed) * 100;
+          .py-2.bg-red.rounded.shadow.text-red.font-weight-bold.fontStats= `${deathRate.toFixed(2)}%`
+            .my-1.border-top.border-red.marginDivider
+            span.pt-1.d-block.fontLabel Death Rate
+    
+    .row.m-t.pb-3
+      .col-md-6
+        #chartContainer
+      .col-md-6.mobile-m-t
+        #chartContainer2 
+
+    .row.m-t-500.pb-3
+      .col-12.my-2
+        .tableHeight
+          table.table.bg-white
+            thead
+              tr.text-center
+                th(colspan='4') Affected Countries
+              tr
+                th(scope='col') Countries
+                th(scope='col') Confirmed
+                th(scope='col') Recovered
+                th(scope='col') Deaths
+            tbody
+              each result in results.data
+                if result.countryCode && result.countryCode !== 'OT' && result.totalConfirmed >= 10
+                  tr
+                    td
+                      - const countryCode = result.countryCode.toLowerCase();
+                      a(href=`/affected-countries/${countryCode}` target='_blank')
+                        i(class=`pr-5 flag-icon flag-icon-${countryCode}`)
+                        = result.country
+
+                    td= result.totalConfirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+                    td= result.totalRecovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+                    td= result.totalDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+      
+
+      
+    
