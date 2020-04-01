@@ -12,15 +12,16 @@ https://covidtracer.herokuapp.com/
 
 # Screenshots
 
-• /
+## /
+
 ![Home](https://imgur.com/AGwu1ui.png)
 
-• /affected-countries
+## /affected-countries
 
 ![Affected Countries 1](https://imgur.com/XdWEZiQ.png)
 
 ![Affected Countries 1](https://imgur.com/ZdybHBB.png)
 
-• /affected-countries/:countryCode
+## /affected-countries/ph
 
 ![Affected Countries 1](https://imgur.com/L1F5aZW.png)
