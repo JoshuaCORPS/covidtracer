@@ -14,14 +14,14 @@ https://covidtracer.herokuapp.com/
 
 ## /
 
-![Home](https://imgur.com/AGwu1ui.png)
+![Home](./public/img/homecovidtracer.png)
 
 ## /affected-countries
 
-![Affected Countries 1](https://imgur.com/XdWEZiQ.png)
+![Affected Countries 1](./public/img/affectecountries.png)
 
-![Affected Countries 1](https://imgur.com/ZdybHBB.png)
+![Affected Countries 2](./public/img/affectecountries2.png)
 
 ## /affected-countries/ph
 
-![Affected Countries 1](https://imgur.com/L1F5aZW.png)
+![Country Overview](./public/img/countryoverview.png)
