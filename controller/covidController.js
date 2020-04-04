@@ -11,9 +11,11 @@ exports.getHome = async (req, res) => {
     );
 
     const limitRes = [];
-    for (let i = 0; i < 10; i++) {
-      limitRes.push(results.data[i]);
+    for (let i = 0; i <= 10; i++) {
+      if (results.data[i].countryCode) limitRes.push(results.data[i]);
     }
+
+    console.log(limitRes);
 
     res.status(200).render('index', { results: limitRes, count: overAllCount });
   } catch (err) {
