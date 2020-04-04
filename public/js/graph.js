@@ -113,7 +113,7 @@ export const showLineGraph = async (id, rev, cc = '') => {
 
 export const showColumnGraph = async () => {
   const data = await axios(
-    'https://api.coronatracker.com/v3/analytics/dailyNewStats?limit=10'
+    'https://api.coronatracker.com/v3/analytics/dailyNewStats?limit=11'
   );
 
   const dataPoints = createColumnDataPoints(data.data);
@@ -172,13 +172,12 @@ const createDataPoints = (arr, set, rev) => {
 
 const createColumnDataPoints = arr => {
   const points = [];
-
   arr.forEach(el => {
     const obj = {
       y: el.daily_cases,
       label: el.country
     };
-    points.push(obj);
+    if (el.country !== 'World') points.push(obj);
   });
 
   return points;
