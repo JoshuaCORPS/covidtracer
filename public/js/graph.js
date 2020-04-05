@@ -40,36 +40,34 @@ export const showLineGraph = async (id, rev, cc = '') => {
   const recovered = createDataPoints(oneMonthData, 'recovered', rev);
   const deaths = createDataPoints(oneMonthData, 'deaths', rev);
 
-  console.log(Date.now(confirmed[0].x));
-
   const chart = new CanvasJS.Chart(`${id}`, {
     animationEnabled: true,
     theme: 'light2',
     title: {
-      text: 'Outbreak Over Time'
+      text: 'Outbreak Over Time',
     },
     axisX: {
       valueFormatString: 'DD MMM',
       crosshair: {
         enabled: true,
-        snapToDataPoint: true
-      }
+        snapToDataPoint: true,
+      },
     },
     axisY: {
       title: 'Past 30 days Chart',
       crosshair: {
-        enabled: true
-      }
+        enabled: true,
+      },
     },
     toolTip: {
-      shared: true
+      shared: true,
     },
     legend: {
       cursor: 'pointer',
       verticalAlign: 'bottom',
       horizontalAlign: 'left',
       dockInsidePlotArea: true,
-      itemclick: toogleDataSeries
+      itemclick: toogleDataSeries,
     },
     data: [
       {
@@ -80,23 +78,23 @@ export const showLineGraph = async (id, rev, cc = '') => {
         xValueFormatString: 'DD MMM, YYYY',
         color: 'orange',
         lineColor: 'orange',
-        dataPoints: confirmed
+        dataPoints: confirmed,
       },
       {
         type: 'line',
         showInLegend: true,
         name: 'Recovered',
         lineDashType: 'dash',
-        dataPoints: recovered
+        dataPoints: recovered,
       },
       {
         type: 'line',
         showInLegend: true,
         name: 'Deaths',
         lineDashType: 'dash',
-        dataPoints: deaths
-      }
-    ]
+        dataPoints: deaths,
+      },
+    ],
   });
 
   chart.render();
@@ -122,10 +120,10 @@ export const showColumnGraph = async () => {
     animationEnabled: true,
     theme: 'light2', // "light1", "light2", "dark1", "dark2"
     title: {
-      text: 'Daily New Cases'
+      text: 'Daily New Cases',
     },
     axisY: {
-      title: 'Top 10 Countries Chart'
+      title: 'Top 10 Countries Chart',
     },
     data: [
       {
@@ -133,9 +131,9 @@ export const showColumnGraph = async () => {
         showInLegend: true,
         legendMarkerColor: 'grey',
         legendText: ' ',
-        dataPoints
-      }
-    ]
+        dataPoints,
+      },
+    ],
   });
   chart.render();
 };
@@ -143,7 +141,7 @@ export const showColumnGraph = async () => {
 const createDataPoints = (arr, set, rev) => {
   const points = [];
 
-  arr.forEach(el => {
+  arr.forEach((el) => {
     const [m, d, y] = new Date(rev ? el.lastUpdated : el.last_updated)
       .toLocaleDateString()
       .split('/');
@@ -161,7 +159,7 @@ const createDataPoints = (arr, set, rev) => {
             : el.total_recovered
           : rev
           ? el.totalDeaths
-          : el.total_deaths
+          : el.total_deaths,
     };
 
     points.push(obj);
@@ -170,12 +168,12 @@ const createDataPoints = (arr, set, rev) => {
   return rev ? points.reverse() : points;
 };
 
-const createColumnDataPoints = arr => {
+const createColumnDataPoints = (arr) => {
   const points = [];
-  arr.forEach(el => {
+  arr.forEach((el) => {
     const obj = {
       y: el.daily_cases,
-      label: el.country
+      label: el.country,
     };
     if (el.country !== 'World') points.push(obj);
   });
