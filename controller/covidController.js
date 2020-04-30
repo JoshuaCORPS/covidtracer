@@ -15,8 +15,6 @@ exports.getHome = async (req, res) => {
       if (results.data[i].countryCode) limitRes.push(results.data[i]);
     }
 
-    console.log(limitRes);
-
     res.status(200).render('index', { results: limitRes, count: overAllCount });
   } catch (err) {
     res.status(500).render('notfound', {
@@ -77,10 +75,10 @@ exports.getCountry = async (req, res) => {
     return obj.countryCode
       ? res.status(200).render('country', { result: obj })
       : res.status(404).render('notfound', {
-          header: 'No Country Found',
-          message:
-            'The link you entered may be broken or the page may have been removed.'
-        });
+        header: 'No Country Found',
+        message:
+          'The link you entered may be broken or the page may have been removed.'
+      });
   } catch (err) {
     res.status(500).render('notfound', {
       header: 'Ooops',
@@ -96,10 +94,10 @@ exports.checkService = async (req, res, next) => {
     return service.data.status === 'OK'
       ? next()
       : res.status(500).render('notfound', {
-          header: 'Service Not Available!',
-          message:
-            'The service is currently not available! Please Try again later.'
-        });
+        header: 'Service Not Available!',
+        message:
+          'The service is currently not available! Please Try again later.'
+      });
   } catch (err) {
     res.status(500).render('notfound', {
       header: 'Ooops',
