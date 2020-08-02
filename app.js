@@ -12,7 +12,7 @@ const app = express();
 const limiter = rateLimit({
   max: 150,
   windowMs: 60 * 60 * 1000,
-  message: 'Too many request from this IP! Please try again after an hour.'
+  message: 'Too many request from this IP! Please try again after an hour.',
 });
 
 app.set('view engine', 'pug');
@@ -32,7 +32,7 @@ app.all('*', (req, res) => {
   res.status(404).render('notfound', {
     header: 'Not found',
     message:
-      'The link you entered may be broken or the page may have been removed.'
+      'The link you entered may be broken or the page may have been removed.',
   });
 });
 

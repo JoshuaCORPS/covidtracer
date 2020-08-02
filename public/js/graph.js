@@ -111,7 +111,7 @@ export const showLineGraph = async (id, rev, cc = '') => {
 
 export const showColumnGraph = async () => {
   const data = await axios(
-    'https://api.coronatracker.com/v3/analytics/dailyNewStats?limit=11'
+    'https://api.coronatracker.com/v3/analytics/dailyNewStats?limit=10'
   );
 
   const dataPoints = createColumnDataPoints(data.data);
