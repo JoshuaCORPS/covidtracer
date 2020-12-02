@@ -24,7 +24,7 @@ export const showLineGraph = async (id, rev, cc = '') => {
   const url =
     id === 'chartContainer'
       ? 'https://api.coronatracker.com/v3/stats/worldometer/totalTrendingCases'
-      : `https://api.coronatracker.com/v3/analytics/trend/country?countryCode=${cc}&startDate=${year}-${month}-${days}&endDate=${endYear}-${endMonth}-${endDay}`;
+      : `https://api.coronatracker.com/v5/analytics/trend/country?countryCode=${cc}&startDate=${year}-${month}-${days}&endDate=${endYear}-${endMonth}-${endDay}`;
 
   const data = await axios(url);
 
@@ -111,7 +111,7 @@ export const showLineGraph = async (id, rev, cc = '') => {
 
 export const showColumnGraph = async () => {
   const data = await axios(
-    'https://api.coronatracker.com/v3/analytics/dailyNewStats?limit=10'
+    'https://api.coronatracker.com/v5/analytics/dailyNewStats?limit=10'
   );
 
   const dataPoints = createColumnDataPoints(data.data);
